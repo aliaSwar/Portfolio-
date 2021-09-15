@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageContrller;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageContrller::class, 'home']);
+Route::get('download', [PageContrller::class, 'download'])->name('download');
