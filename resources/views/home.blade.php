@@ -25,7 +25,7 @@
                 <div class="column right">
                     <div class="text">I'm Alia and I'm a <span class="typing-2"></span></div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ut voluptatum eveniet doloremque autem excepturi eaque, sit laboriosam voluptatem nisi delectus. Facere explicabo hic minus accusamus alias fuga nihil dolorum quae. Explicabo illo unde, odio consequatur ipsam possimus veritatis, placeat, ab molestiae velit inventore exercitationem consequuntur blanditiis omnis beatae. Dolor iste excepturi ratione soluta quas culpa voluptatum repudiandae harum non.</p>
-                    <a href="{{ route('download') }}">Download CV</a>
+                    <a href="{{ asset('alia-cv.pdf') }}"download>Download CV</a>
                 </div>
             </div>
         </div>
@@ -83,28 +83,35 @@
                     <div class="bars">
                         <div class="info">
                             <span>CSS</span>
-                            <span>60%</span>
+                            <span>50%</span>
                         </div>
                         <div class="line css"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>JavaScript</span>
-                            <span>80%</span>
+                            <span>50%</span>
                         </div>
                         <div class="line js"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>PHP</span>
-                            <span>50%</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="line php"></div>
+                    </div>
+                    <div class="bars">
+                        <div class="info">
+                            <span>Laravel</span>
+                            <span>80%</span>
                         </div>
                         <div class="line php"></div>
                     </div>
                     <div class="bars">
                         <div class="info">
                             <span>MySQL</span>
-                            <span>70%</span>
+                            <span>80%</span>
                         </div>
                         <div class="line mysql"></div>
                     </div>
@@ -121,37 +128,25 @@
                 <div class="card">
                     <div class="box">
                         <img src="images/profile-1.jpeg" alt="">
-                        <div class="text">Someone name</div>
+                        <div class="text">Alia Swar</div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <img src="images/profile-2.jpeg" alt="">
-                        <div class="text">Someone name</div>
+                        <div class="text">Lina Gojan</div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <img src="images/profile-3.jpeg" alt="">
-                        <div class="text">Someone name</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <div class="text">Amara Sogaa</div>
+                        <p>FrontEnd developer</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/profile-4.jpeg" alt="">
-                        <div class="text">Someone name</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <img src="images/profile-5.jpeg" alt="">
-                        <div class="text">Someone name</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -184,33 +179,52 @@
                             <i class="fas fa-envelope"></i>
                             <div class="info">
                                 <div class="head">Email</div>
-                                <div class="sub-title">swar000alia@gmail.com</div>
+                                <div class="sub-title">swar2000alia@gmail.com</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form action="{{-- {{ route('contact') }} --}}">
+                    <form action="{{ route('contact.store') }}"method="POST" enctype="multipart/form-data" >
+                        @csrf
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input name="name" type="text" placeholder="Name" required>
+                                @error('name')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input name="email"type="email" placeholder="Email" required>
+                                @error('email')
+                                <p style="color: red">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="field">
-                            <input type="text" placeholder="Subject" required>
+                            <input name="subject"type="text" placeholder="Subject" required>
+                            @error('subject')
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10"name="message" placeholder="Message.." required></textarea>
+                            @error('message')
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="button-area">
+
+
+
+
                             <button type="submit">Send message</button>
                         </div>
                     </form>
+
                 </div>
+
             </div>
         </div>
     </section>
